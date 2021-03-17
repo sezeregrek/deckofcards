@@ -1,4 +1,6 @@
 import { useQuery, useMutation } from "react-query";
+import { useStore } from "store";
+import { setRemaining } from "store/store.actions";
 import { TDeck, TCardsResponse } from "types/deck.types";
 
 const ajaxGet = async (host: string) => {
@@ -10,24 +12,26 @@ const ajaxGet = async (host: string) => {
 export const useDeckGet = (options: any = {}) =>
   useQuery<TDeck, any>(
     "deck",
-    () => ajaxGet("https://deckofcardsapi.com/api/deck/2vnpsgucmiph/shuffle"),
+    () => ajaxGet("https://deckofcardsapi.com/api/deck/new/shuffle"),
     {
       ...options,
     }
   );
 
-type CardsBody = {
-  count: number;
-  deck_id: string;
-};
+export const useDrawCardsPost = () => {
+  const [{ deck_id, drawCount }, dispatch] = useStore();
 
-export const useDrawCardsPost = (options: any = {}) =>
-  useMutation<TCardsResponse, any, any>(
-    ({ deck_id, count }: CardsBody) =>
+  return useMutation(
+    () =>
       ajaxGet(
-        `https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=${count}`
+        `https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=${drawCount}`
       ),
     {
-      ...options,
+      onSuccess: (res: TCardsResponse) => {
+        if (res.remaining !== undefined) {
+          dispatch(setRemaining(res.remaining));
+        }
+      },
     }
   );
+};
