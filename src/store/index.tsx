@@ -5,6 +5,7 @@ import type { StoreActions } from "./store.actions";
 
 type State = {
   deck_id?: string;
+  remaining?: number;
 };
 
 const initialState: State = {};
@@ -15,6 +16,16 @@ const reducer = (state: State, action: StoreActions): State => {
       return {
         ...state,
         deck_id: action.payload,
+      };
+    case getType(actions.resetDeck):
+      return {
+        ...state,
+        deck_id: undefined,
+      };
+    case getType(actions.setRemaining):
+      return {
+        ...state,
+        remaining: action.payload,
       };
     default:
       return state;
