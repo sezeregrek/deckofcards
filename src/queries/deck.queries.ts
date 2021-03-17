@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { TDeck } from "types/deck.types";
+import { TDeck, TCardsResponse } from "types/deck.types";
 
 const ajaxGet = async (host: string) => {
   const response = await fetch(host);
@@ -7,12 +7,27 @@ const ajaxGet = async (host: string) => {
   return response.json();
 };
 
-export const useDeckGet = () =>
-  useQuery<TDeck, any>("deck", () =>
-    ajaxGet("https://deckofcardsapi.com/api/deck/2vnpsgucmiph/?cards=true")
+export const useDeckGet = (options: any = {}) =>
+  useQuery<TDeck, any>(
+    "deck",
+    () => ajaxGet("https://deckofcardsapi.com/api/deck/2vnpsgucmiph/shuffle"),
+    {
+      ...options,
+    }
   );
 
-export const useDrawCardsPost = () =>
-  useMutation((body: { count: number }) =>
-    ajaxGet(`https://deckofcardsapi.com/api/deck/new/draw/?count=${body.count}`)
+type CardsBody = {
+  count: number;
+  deck_id: string;
+};
+
+export const useDrawCardsPost = (options: any = {}) =>
+  useMutation<TCardsResponse, any, any>(
+    ({ deck_id, count }: CardsBody) =>
+      ajaxGet(
+        `https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=${count}`
+      ),
+    {
+      ...options,
+    }
   );

@@ -4,7 +4,7 @@ import * as actions from "./store.actions";
 import type { StoreActions } from "./store.actions";
 
 type State = {
-  deck_id?: number;
+  deck_id?: string;
 };
 
 const initialState: State = {};
