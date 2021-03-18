@@ -1,6 +1,6 @@
 import { useQuery, useMutation } from "react-query";
-import { useStore } from "store";
-import { setRemaining } from "store/store.actions";
+import { useStore } from "pages/Example5/store";
+import { setRemaining } from "pages/Example5/store/store.actions";
 import { TDeck, TCardsResponse } from "types/deck.types";
 
 const ajaxGet = async (host: string) => {

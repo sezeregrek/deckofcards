@@ -1,32 +1,12 @@
 import "styles/index.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { StoreProvider } from "store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 0,
-      refetchOnWindowFocus: false,
-    },
-    mutations: {
-      retry: 0,
-    },
-  },
-});
-
 ReactDOM.render(
   <React.StrictMode>
-    <StoreProvider>
-      <QueryClientProvider client={queryClient}>
-        <App />
-        <ReactQueryDevtools />
-      </QueryClientProvider>
-    </StoreProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

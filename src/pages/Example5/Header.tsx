@@ -1,4 +1,4 @@
-import { useStore } from "store";
+import { useStore } from "pages/Example5/store";
 
 const Header = () => {
   const [{ remaining }] = useStore();
