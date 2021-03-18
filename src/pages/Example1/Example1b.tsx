@@ -23,7 +23,7 @@ const reducer = (state: State, action: Actions): State => {
   }
 };
 
-const Example1 = () => {
+const Example1b = () => {
   const [{ counter }, dispatch] = useReducer(reducer, { counter: 0 });
 
   return (
@@ -38,4 +38,4 @@ const Example1 = () => {
   );
 };
 
-export default Example1;
+export default Example1b;
