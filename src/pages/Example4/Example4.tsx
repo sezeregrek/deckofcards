@@ -1,9 +1,10 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { useDeckGet } from "queries/deck.queries";
+import { useDrawCardsGet } from "queries/deck.queries";
+import Cards from "components/Cards";
 
 const Example4Sample = () => {
-  const { data, isLoading, isError } = useDeckGet();
+  const { data, isLoading, isError } = useDrawCardsGet();
 
   if (isLoading) {
     return <>loading...</>;
@@ -13,12 +14,7 @@ const Example4Sample = () => {
     return <>Error!</>;
   }
 
-  return (
-    <div className="flex flex-col space-y-3">
-      <span>Deck ID: {data?.deck_id}</span>
-      <span>Remaining Cards: {data?.remaining}</span>
-    </div>
-  );
+  return <Cards cards={data?.cards} />;
 };
 
 const queryClient = new QueryClient({

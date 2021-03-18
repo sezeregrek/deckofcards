@@ -1,26 +1,22 @@
 import { useEffect, useState } from "react";
 import { ajaxGet } from "queries/deck.queries";
-import type { TDeck } from "types/deck.types";
+import type { TCard } from "types/deck.types";
+import Cards from "components/Cards";
 
 const Example3 = () => {
-  const [data, setData] = useState<TDeck>();
+  const [data, setData] = useState<TCard[]>();
 
   useEffect(() => {
-    ajaxGet("https://deckofcardsapi.com/api/deck/new/shuffle/").then((res) =>
-      setData(res)
-    );
+    ajaxGet(
+      "https://deckofcardsapi.com/api/deck/new/draw/?count=4"
+    ).then((res) => setData(res.cards));
   }, []);
 
   if (!data) {
     return <>loading...</>;
   }
 
-  return (
-    <div className="flex flex-col space-y-3">
-      <span>Deck ID: {data.deck_id}</span>
-      <span>Remaining Cards: {data.remaining}</span>
-    </div>
-  );
+  return <Cards cards={data} />;
 };
 
 export default Example3;

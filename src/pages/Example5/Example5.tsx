@@ -5,7 +5,7 @@ import { StoreProvider, useStore } from "pages/Example5/store";
 import { setDeckID, setRemaining } from "./store/store.actions";
 import { TDeck } from "types/deck.types";
 import Header from "./Header";
-import Cards from "./Cards";
+import Cards from "components/Cards";
 import { DrawCardButton, ResetButton } from "./Button";
 
 function Example5App() {

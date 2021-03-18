@@ -17,6 +17,14 @@ export const useDeckGet = (options: any = {}) =>
       ...options,
     }
   );
+export const useDrawCardsGet = (options: any = {}) =>
+  useQuery<TCardsResponse, any>(
+    "draw-cards",
+    () => ajaxGet("https://deckofcardsapi.com/api/deck/new/draw/?count=8"),
+    {
+      ...options,
+    }
+  );
 
 export const useDrawCardsPost = () => {
   const [{ deck_id, drawCount }, dispatch] = useStore();
