@@ -3,6 +3,7 @@ import {
   Switch,
   Route,
   NavLink,
+  Redirect,
 } from "react-router-dom";
 import {
   Example1a,
@@ -50,6 +51,7 @@ function App() {
             <Route path="/example3" component={Example3} exact />
             <Route path="/example4" component={Example4} exact />
             <Route path="/example5" component={Example5} exact />
+            <Redirect to="/example1a" />
           </Switch>
         </div>
       </Router>
