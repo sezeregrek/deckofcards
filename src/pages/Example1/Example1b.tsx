@@ -28,7 +28,6 @@ const Example1b = () => {
 
   return (
     <div className="flex flex-col space-x-6">
-      <div className="flex w-full text-lg pb-6">useReducer hook example</div>
       <div className="flex items-center space-x-3">
         <Button onClick={() => dispatch(decrease())}>-</Button>
         <span className="text-md">{counter}</span>

@@ -6,7 +6,6 @@ const Example1a = () => {
 
   return (
     <div className="flex flex-col space-x-6">
-      <div className="flex w-full text-lg pb-6">useState hook example</div>
       <div className="flex items-center space-x-3">
         <Button onClick={() => setCounter(counter - 1)}>-</Button>
         <span className="text-md">{counter}</span>

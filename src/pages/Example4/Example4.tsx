@@ -15,8 +15,6 @@ const Example4Sample = () => {
 
   return (
     <div className="flex flex-col space-y-3">
-      <div className="flex w-full text-lg pb-6">basic react query example</div>
-
       <span>Deck ID: {data?.deck_id}</span>
       <span>Remaining Cards: {data?.remaining}</span>
     </div>

@@ -62,9 +62,6 @@ const Counter = () => {
 
 const Example2bSample = () => (
   <div className="flex flex-col space-x-6">
-    <div className="flex w-full text-lg pb-6">
-      context & useReducer hook example
-    </div>
     <Counter />
   </div>
 );
