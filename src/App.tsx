@@ -5,6 +5,7 @@ import {
   Example2a,
   Example2b,
   Example3,
+  Example4,
   Example5,
 } from "pages";
 
@@ -18,6 +19,7 @@ function App() {
           <Link to="/example2a">Example2a</Link>
           <Link to="/example2b">Example2b</Link>
           <Link to="/example3">Example3</Link>
+          <Link to="/example4">Example4</Link>
           <Link to="/example5">Example 5</Link>
         </nav>
         <div className="w-full pt-8">
@@ -27,6 +29,7 @@ function App() {
             <Route path="/example2a" component={Example2a} exact />
             <Route path="/example2b" component={Example2b} exact />
             <Route path="/example3" component={Example3} exact />
+            <Route path="/example4" component={Example4} exact />
             <Route path="/example5" component={Example5} exact />
           </Switch>
         </div>
