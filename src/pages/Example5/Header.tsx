@@ -4,7 +4,7 @@ const Header = () => {
   const [{ remaining }] = useStore();
 
   return (
-    <header className="flex items-end justify-between py-8">
+    <header className="flex items-end justify-between pb-8">
       <span className="font-bold text-xl">Deck of Cards</span>
       {remaining !== undefined && (
         <span className="text-xs">Remaining cards: {remaining}</span>
