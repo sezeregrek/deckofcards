@@ -3,7 +3,7 @@ import { useStore } from "pages/Example5/store";
 import { setRemaining } from "pages/Example5/store/store.actions";
 import { TDeck, TCardsResponse } from "types/deck.types";
 
-const ajaxGet = async (host: string) => {
+export const ajaxGet = async (host: string) => {
   const response = await fetch(host);
 
   return response.json();
@@ -12,7 +12,7 @@ const ajaxGet = async (host: string) => {
 export const useDeckGet = (options: any = {}) =>
   useQuery<TDeck, any>(
     "deck",
-    () => ajaxGet("https://deckofcardsapi.com/api/deck/new/shuffle"),
+    () => ajaxGet("https://deckofcardsapi.com/api/deck/new/shuffle/"),
     {
       ...options,
     }
